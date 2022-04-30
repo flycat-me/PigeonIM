@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terry.pigeon.mapper.MessagesMapper">
+    <update id="deleteMessage">
+        UPDATE pigeonim_messages SET del_flag='0' WHERE message_id = #{messageId}
+    </update>
+    <update id="revokeMessage">
+        UPDATE pigeonim_messages SET is_revoke='1' WHERE message_id = #{messageId}
+    </update>
+    <select id="recentMessageGet" resultType="com.terry.pigeon.entity.Messages">
+        select * from pigeonim_messages where session_id = #{sessionId} ORDER BY update_at DESC,update_at DESC limit 1
+    </select>
+</mapper>

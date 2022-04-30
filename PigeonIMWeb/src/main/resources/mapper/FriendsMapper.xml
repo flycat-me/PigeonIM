@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terry.pigeon.mapper.FriendsMapper">
+    <update id="updateFriendDelFlag">
+        update pigeonim_friends set del_flag = 1 where user_id = #{friendUserId} and friend_user_id = #{userId}
+    </update>
+    <select id="getFriendListByUserId" resultType="com.terry.pigeon.vo.FriendListVo" parameterType="string">
+        SELECT pf.friend_user_id,pu.nick_name,pu.gender,pu.motto,pu.avatar,pf.friend_remark,pf.is_online
+        FROM `pigeonim_friends` pf LEFT JOIN pigeonim_users pu on pf.friend_user_id = pu.user_id where pf.user_id = #{userId} and pf.del_flag = 1
+    </select>
+
+    <select id="getFriendInfoByUserIdAndFriendId" resultType="com.terry.pigeon.vo.FriendListVo" parameterType="long">
+        SELECT pf.friend_user_id,pu.nick_name,pu.gender,pu.motto,pu.avatar,pf.friend_remark,pf.is_online
+        FROM `pigeonim_friends` pf LEFT JOIN pigeonim_users pu on pf.friend_user_id = pu.user_id where pf.user_id = #{userId} and pf.del_flag = 1 and pf.friend_user_id = #{friendId}
+    </select>
+</mapper>

@@ -1,0 +1,39 @@
+#部署环境
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.147.132:3306/PigeonIM?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      #单个文件大小
+      max-file-size: 50MB
+      #总上传数据大小
+      max-request-size: 100MB
+  redis:
+    host: 192.168.147.132
+    port: 6379
+mybatis-plus:
+  configuration:
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      id-type: assign_id
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+pigeon:
+  im:
+    obs:
+      #obs连接地址
+      endPoint: https://obs.cn-east-3.myhuaweicloud.com
+      ak: Y5R56TPVLAJW2BFXMWXW
+      sk: rTYkuDHoaot1TWoVUDIbjKYvSJRFnjblsuhcjhNX
+      bucketName: pigeon-im
+

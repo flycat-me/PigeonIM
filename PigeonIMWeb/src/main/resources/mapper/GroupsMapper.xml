@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terry.pigeon.mapper.GroupsMapper">
+
+    <select id="selectGroupListPage" resultType="com.terry.pigeon.vo.GroupListVo">
+        SELECT pgu.user_id,pgu.group_id,pp.group_name,pp.group_info,pp.group_avatar,pgu.is_leader,pgu.is_disturb
+        FROM pigeonim_group_users pgu LEFT JOIN pigeonim_groups pp ON pgu.group_id = pp.group_id WHERE pgu.user_id = #{userId} AND pgu.del_flag = 1
+    </select>
+    <select id="getGroupMember" resultType="com.terry.pigeon.vo.GroupMemberVo">
+        SELECT pgu.gu_id,pgu.user_id,pgu.group_nickName,pu.nick_name,pu.avatar,pu.motto,pgu.is_leader,pu.gender
+        FROM pigeonim_group_users pgu LEFT JOIN pigeonim_users pu on pgu.user_id = pu.user_id WHERE pgu.group_id = #{groupId} AND pgu.del_flag = 1
+    </select>
+</mapper>

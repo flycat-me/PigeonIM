@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terry.pigeon.mapper.GroupNoticeMapper">
+
+    <select id="getGroupNoticeList" resultType="com.terry.pigeon.vo.GroupNoticeListVo">
+        SELECT pgn.*,pu.nick_name,pu.avatar FROM pigeon_group_notice pgn LEFT JOIN pigeonim_users pu ON pgn.create_user_id = pu.user_id WHERE pgn.group_id = #{groupId}
+    </select>
+</mapper>
