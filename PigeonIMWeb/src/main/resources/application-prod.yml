@@ -32,8 +32,8 @@ pigeon:
   im:
     obs:
       #obs连接地址
-      endPoint: https://obs.cn-east-3.myhuaweicloud.com
-      ak: Y5R56TPVLAJW2BFXMWXW
-      sk: rTYkuDHoaot1TWoVUDIbjKYvSJRFnjblsuhcjhNX
-      bucketName: pigeon-im
+      endPoint:
+      ak:
+      sk:
+      bucketName:
 
